@@ -1,0 +1,19 @@
+#pragma once
+#include"Common.h"
+#include"Card.h"
+
+class Shoe
+{
+public:
+	Shoe();					// コンストラクタ
+	virtual ~Shoe();		// デストラクタはvirtualをつける
+	Card TakeCard();		// カードを１枚返す	
+private:
+
+	int DiscardPile[CARD_NUM]; //捨て札
+	Card _card[CARD_NUM];	// 山札
+	int _cardNum;			// カードが何枚残っているか
+	void _Shuffle();		// シャッフル
+	void InitShoe();		// 山札の初期化
+};
+
