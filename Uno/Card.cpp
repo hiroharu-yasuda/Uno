@@ -40,3 +40,6 @@ void Card::ShowCard()const
 		cout << "Skip" << endl;
 	}
 }
+void Card::dispose(Shoe& shoe) {
+
+}

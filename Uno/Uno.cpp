@@ -36,7 +36,7 @@ int main()
 {
     srand(time(NULL));
     int StartNum=0;
-    int turn = 1;
+    int turn = 0;
     bool Reverse = false;
     Shoe shoe;
     Player p1("Player1");

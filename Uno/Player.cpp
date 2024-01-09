@@ -2,6 +2,7 @@
 
 #include<iostream>
 #include<algorithm>
+#include <string>
 #include"Card.h"
 #include"Player.h"
 #include"Shoe.h"
@@ -76,56 +77,73 @@ const char* Player::GetName()const
 {
 	return _pName;
 }
-void Player::sort() {
+//void Player::sort(Shoe& shoe) {
+//	int box = 0;
+//	for (sortNum = 0; sortNum < _cardNum; sortNum++) {
+//
+//		int b = 0;
+//		/*if (_hand[sortNum] == NULL) {
+//			
+//				int tempNum = _hand[sortNum].GetNum();
+//			_hand[sortNum].SetNum(_hand[b].GetNum());
+//			_hand[b].SetNum(tempNum);
+//		}*/
+//	}
+//		
+//	}
 
-}
 void Player::Game(Shoe& shoe) {
 	int end = 0;
 	do
 	{
 		end = 0;
-	int select = 0;
-	int selectCard = 0;
-	cout << "====================" << endl;
-	cout << GetName() << endl;
-	ShowHand();
-	cout << "====================" << endl;
-	do
-	{
-		cout << "何をしますか？" << endl
-			<< "1:カードを捨てる";
-		if (_draw == false) {
-			cout << "2:カードをドローする" << flush;
-		}
-		else {
-			cout << "2:パスする" << flush;
-		}
-		cin >> select;
-	} while (select<0&&select>3);
-	switch (select)
-	{case 1:
-			cout << "====================" << endl;
-			ShowHand();
-
-			cout << "====================" << endl;
-			cout << ">" << flush;
-			cin >> selectCard;
-		break;
-	case 2:
-		if (_draw == false) {
-			DeawCard(shoe);
-			_draw = true;
-		}
-		else if(_draw==true)
+		cout << "====================" << endl;
+		cout << GetName() << endl;
+		ShowHand();
+		cout << "====================" << endl;
+		do
 		{
-			_draw = false;
-			end = 1;
+			cout << "何をしますか？" << endl
+				<< "1:カードを捨てる";
+			if (_draw == false) {
+				cout << "2:カードをドローする" << flush;
+			}
+			else {
+				cout << "2:パスする" << flush;
+			}
+			cin >> select;
+		} while (select < 0 && select>3);
+		switch (select)
+		{
+		case 1:
+			do
+			{
+				cout << "====================" << endl;
+				ShowHand();
+
+				cout << "====================" << endl;
+				cout << ">" << flush;
+				cin >> selectCard;
+			} while (selectCard > _cardNum);
+
+
+			break;
+		case 2:
+			if (_draw == false) {
+				DeawCard(shoe);
+				_draw = true;
+			}
+			else if (_draw == true)
+			{
+				_draw = false;
+				end = 1;
+			}
+			break;
+		default:
+			break;
 		}
-		break;
-	default:
-		break;
-	}
-	
+
 
 	} while (end != 1);
+
 }

@@ -15,7 +15,11 @@ public:
 	const char* GetName()const;
 private:
 	char* _pName;
-	Card _hand[Hand_NUM];
+	Card  _hand[Hand_NUM] ;
 	bool _draw = false; 
 	int _cardNum;				// èD‚Ì–‡”
+
+	int select = 0;
+	int selectCard = 0;
+	int sortNum = 0;
 };

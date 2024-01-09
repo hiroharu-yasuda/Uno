@@ -7,7 +7,7 @@ public :
 	void CheckCard(); 	// “Ç‚İæ‚èA‘‚«‚İ
 	int GetNum() const { return _num; }const
 		int GetSuit() const { return _suit; }const
-
+		
 	void SetNum(int num)
 	{
 		_num = num;
@@ -17,6 +17,8 @@ public :
 		_suit = suit;
 	}
 	void ShowCard()const;
+	void dispose(Shoe& shoe);
+
 private:
 	int _num;
 	int _suit;
