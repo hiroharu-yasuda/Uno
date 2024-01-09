@@ -17,7 +17,7 @@ public :
 		_suit = suit;
 	}
 	void ShowCard()const;
-	void dispose(Shoe& shoe);
+	
 
 private:
 	int _num;

@@ -125,6 +125,7 @@ void Player::Game(Shoe& shoe) {
 				cout << ">" << flush;
 				cin >> selectCard;
 			} while (selectCard > _cardNum);
+			//strcpy(_hand[selectCard] ,shoe.dispose(_hand[selectCard]));
 
 
 			break;

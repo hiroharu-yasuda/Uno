@@ -1,6 +1,7 @@
 #include <iostream>
 #include"Shoe.h"
 #include"Card.h"
+#include"Player.h"
 using namespace std;
 void Shoe::InitShoe()
 {
@@ -64,5 +65,15 @@ void Shoe::_Shuffle()
 		_card[a].SetSuit(_card[b].GetSuit());
 		_card[b].SetNum(tempNum);
 		_card[b].SetSuit(tempSuit);
+	}
+}
+void Shoe::dispose(int cardNam) {
+	int DColor = DiscardPile[DiscardNam] % 5;
+	int color = cardNam % 5;
+	if (DColor == color) {
+		
+	}
+	else if (color == 4) {
+
 	}
 }
