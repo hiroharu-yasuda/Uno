@@ -61,6 +61,8 @@ void Player::DeawCard(Shoe& shoe) {
 }
 void Player::ShowHand() {
 	//標準出力
+	cout << "====================" << endl;
+
 	cout << "hand: " << endl;
 
 	// 手札配列の最初から最後までを順に表示
@@ -71,6 +73,8 @@ void Player::ShowHand() {
 		cout << endl;
 
 	}
+	cout << "====================" << endl;
+
 
 }
 const char* Player::GetName()const
@@ -101,6 +105,7 @@ void Player::Game(Shoe& shoe) {
 		cout << GetName() << endl;
 		ShowHand();
 		cout << "====================" << endl;
+		shoe.mount();
 		do
 		{
 			cout << "何をしますか？" << endl
@@ -125,8 +130,8 @@ void Player::Game(Shoe& shoe) {
 				cout << ">" << flush;
 				cin >> selectCard;
 			} while (selectCard > _cardNum);
-			//strcpy(_hand[selectCard] ,shoe.dispose(_hand[selectCard]));
-
+			//shoe.dispose(_hand[selectCard]);
+			//↑これがやりたいのだがやり方がわからない　なんかint型にできないので後で調べる
 
 			break;
 		case 2:

@@ -3,6 +3,8 @@
 #include"Card.h"
 #include"Player.h"
 using namespace std;
+
+const char* mountName[Color_NUM] = { "red", "blue", "Yellow", "green","wild" };
 void Shoe::InitShoe()
 {
 	
@@ -11,12 +13,13 @@ void Shoe::InitShoe()
 	for (int i = 0; i < CARD_NUM; ++i)
 	{
 		_card[i].SetNum(i % 13);	//‚O`‚P‚Q‚Å‰Šú‰»
-		_card[i].SetSuit(i % 5);	//‚O`4‚Å‰Šú‰»
+		_card[i].SetSuit(i % Color_NUM);	//‚O`4‚Å‰Šú‰»
 	}
 
 	// ƒVƒƒƒbƒtƒ‹
 	_Shuffle();
-}Shoe::Shoe()
+}
+Shoe::Shoe()
 {
 	InitShoe();
 
@@ -68,12 +71,73 @@ void Shoe::_Shuffle()
 	}
 }
 void Shoe::dispose(int cardNam) {
-	int DColor = DiscardPile[DiscardNam] % 5;
-	int color = cardNam % 5;
-	if (DColor == color) {
-		
+	int DColor = DiscardNam % Color_NUM;
+	int color = cardNam % Color_NUM;
+	int selectcolor=0;
+	if (DColor == color||DiscardNam%13==cardNam%13) {
+		cout << "ƒJ[ƒh‚ðŽÌ‚Ä‚Ü‚µ‚½" << endl;
+		DiscardNam = cardNam;
 	}
 	else if (color == 4) {
-
+		cout << "ŽŸ‚ÌF‚ðŒˆ‚ß‚Ä‚­‚¾‚³‚¢" << endl
+			<<"1:Ô@2:Â@3:‰©@4:—Î"<<flush;
+		cin >> selectcolor;
+		switch (selectcolor)
+		{
+		case 1:
+			DiscardNam = 0;
+			break;
+		case 2:
+			DiscardNam = 1;
+			break;
+		case 3:
+			DiscardNam = 2;
+			break;
+		case 4:
+			DiscardNam = 3;
+			break;
+		default:
+			break;
+		}
+		
 	}
+	else {
+		cout << "‚±‚ÌƒJ[ƒh‚ðŽÌ‚Ä‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñI" << endl;
+	}
+}
+void ShwCard(int num)
+{
+	int _suit = num % Color_NUM;
+	int _num = num % 13;
+	cout << mountName[_suit];
+	if (_suit == 4) {
+		if (_num == 0) {
+			cout << "Wild" << endl;
+		}
+		else if (_num == 1) {
+			cout << "Draw4" << endl;
+		}
+	}
+	else if (_num <= 9) {
+		cout << _num << endl;
+		return;
+	}
+	else if (_num == 10) {
+		cout << "Draw2" << endl;
+	}
+	else if (_num == 11) {
+		cout << "Reverse" << endl;
+	}
+	else if (_num == 12) {
+		cout << "Skip" << endl;
+	}
+	return;
+}
+void Shoe::mount() {
+	Card card;
+	cout << "====================" << endl;
+	cout << "ŽÌ‚ÄŽD‚Ìˆê”Ôã" << endl;
+	ShwCard(DiscardNam);
+	cout << "====================" << endl;
+
 }

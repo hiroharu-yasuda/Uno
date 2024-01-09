@@ -12,24 +12,7 @@ static Player* CreatePlayer()
     cin >> name;
     return new Player(name);
 
-    do
-    {
-        int select = 0;
-        cout << "プレーヤーを追加しますか？\n"
-            << "１．はい　２．いいえ" << flush;
-        cin >> select;
-
-        if (select == 1)
-        {
-            cin >> name;
-            char name[32];
-            return new Player(name);
-        }
-        else if (select == 2)
-        {
-            break;
-        }
-    } while (true);
+   
 }
 
 int main()
@@ -61,6 +44,7 @@ int main()
     {
         playerList[i].ShowHand();
     }
+    
     do
     {
         if (Reverse == false) {
